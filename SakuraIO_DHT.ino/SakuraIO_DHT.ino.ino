@@ -37,23 +37,30 @@ void loop() {
   // Sound
   //analogRead(0);
   //delay(10);
-  uint32_t vol = analogRead(0);
+  uint32_t vol = analogRead(2);
   Serial.print("Volume: ");
   Serial.println(vol);
 
+  uint32_t yubi = analogRead(3);
+  Serial.print("Yubi: ");
+  Serial.println(yubi);
 
-  if(sakuraio.enqueueTx(0,t) != CMD_ERROR_NONE){
+  if(sakuraio.enqueueTx(0,cnt) != CMD_ERROR_NONE){
     Serial.println("[ERR] enqueue error");
   }
-  if(sakuraio.enqueueTx(1,h) != CMD_ERROR_NONE){
+  if(sakuraio.enqueueTx(1,t) != CMD_ERROR_NONE){
     Serial.println("[ERR] enqueue error");
   }
-  if(sakuraio.enqueueTx(2,vol) != CMD_ERROR_NONE){
+  if(sakuraio.enqueueTx(2,h) != CMD_ERROR_NONE){
     Serial.println("[ERR] enqueue error");
   }
-  if(sakuraio.enqueueTx(3,cnt) != CMD_ERROR_NONE){
+  if(sakuraio.enqueueTx(3,vol) != CMD_ERROR_NONE){
     Serial.println("[ERR] enqueue error");
   }
+  if(sakuraio.enqueueTx(4,yubi) != CMD_ERROR_NONE){
+    Serial.println("[ERR] enqueue error");
+  }
+
   sakuraio.send();
   delay(10000);
 
