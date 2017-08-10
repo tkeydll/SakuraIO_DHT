@@ -34,6 +34,14 @@ void loop() {
   Serial.print("Humidity: ");
   Serial.println(h);
 
+  // Sound
+  //analogRead(0);
+  //delay(10);
+  int vol = analogRead(0);
+  Serial.print("Volume: ");
+  Serial.println(vol);
+
+
   if(sakuraio.enqueueTx(0,t) != CMD_ERROR_NONE){
     Serial.println("[ERR] enqueue error");
   }
@@ -44,7 +52,7 @@ void loop() {
     Serial.println("[ERR] enqueue error");
   }
   sakuraio.send();
-  delay(60000);
+  delay(10000);
 
   uint8_t available;
   uint8_t queued;
